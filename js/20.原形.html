@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原形</title>
+  </head>
+  <body></body>
+  <script>
+    const obj = {};
+    console.log(obj);
+    const o1 = new Object({});
+    Object.prototype.name = "原形";
+    o1.name = "1";
+    console.log(o1);
+
+    Object.prototype.toString = function () {
+      return "这是一个对象";
+    };
+
+    console.log(obj + " ");
+    console.log(obj.toString()); //obj没有toString方法，会去原型链上找，找到Object.prototype上的toString方法
+
+    const o2 = Object.create({
+      eat() {
+        console.log("吃饭");
+      },
+    });
+    o2.__proto__.study = function () {
+      console.log("学习");
+    };
+    console.log(o2);
+    console.log(o2.study); //o2的原型对象
+
+    function People(name) {
+      this.name = name;
+    }
+
+    function _new(fn, ...args) {
+      //创建一个新对象，并将新对象的原型指向构造函数的原型
+      const o = {};
+      //o.__proto__ = fn.prototype; //将新对象的原型指向构造函数的原型
+      o.__proto__ = fn.prototype;
+      //调用构造函数，并将新对象作为this传入，传入剩余的参数
+      fn.apply(o, args);
+      //返回新对象
+      return o;
+    }
+
+    const o3 = new People("张三");
+    console.log(o3);
+
+    const o4 = _new(People, "李四");
+    console.log(o4);
+  </script>
+</html>

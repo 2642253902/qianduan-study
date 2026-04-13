@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型-object</title>
+  </head>
+  <body></body>
+  <script>
+    const lyf = {
+      name: "lyf",
+      age: 18,
+    };
+
+    const lyf1 = {
+      name: "lyf",
+      age: 18,
+    };
+
+    console.log(lyf, typeof lyf);
+    console.log(lyf1, typeof lyf1);
+
+    console.log(lyf.name);
+    console.log(lyf["age"]);
+
+    lyf.addr = "北京";
+    lyf.xxx = "yyy";
+    console.log(lyf);
+
+    lyf.age = 19;
+    console.log(lyf);
+
+    delete lyf.addr;
+    delete lyf["xxx"];
+
+    console.log(lyf);
+
+    const name = "helloWorld";
+    const obj = {
+      [name]: "name",
+    };
+    console.log(obj);
+  </script>
+</html>

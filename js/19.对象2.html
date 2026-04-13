@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象2</title>
+  </head>
+  <body></body>
+  <script>
+    const obj = { name: "对象" };
+    const source = {
+      name: "对象",
+      info: {
+        age: 21,
+      },
+      likes: ["吃饭", "睡觉", "打豆豆"],
+    };
+    Object.assign(obj, source);
+    source.info.age = 22; //浅拷贝，修改source.info.age会影响obj.info.age
+    source.name = "对象属性"; //修改source.name不会影响obj.name
+    source.likes.push("打篮球"); //修改source.likes会影响obj.likes
+    console.log(obj);
+
+    const o1 = { name: "对象" };
+    Object.defineProperty(o1, "age", {
+      value: 21,
+      writable: true, //可写
+      enumerable: false, //不可枚举
+      configurable: false, //不可配置
+    });
+
+    o1.age = 22;
+
+    console.log("Object.keys", Object.keys(o1)); //获取可枚举属性的键，["name"]
+    console.log("Object.getOwnPropertyNames", Object.getOwnPropertyNames(o1)); //获取所有属性的键，["name", "age"]
+  </script>
+</html>

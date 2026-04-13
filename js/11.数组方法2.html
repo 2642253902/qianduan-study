@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组方法2</title>
+  </head>
+  <body></body>
+  <script>
+    const a1 = ["hello", "world", "javascript"];
+    a1.forEach((item, index, arr) => {
+      console.log(item, index, arr);
+    });
+
+    const a2 = a1.map((item, index, arr) => {
+      return item + "@";
+    });
+    console.log(a2);
+
+    const a3 = a1.filter((item, index, arr) => {
+      if (item === "world") {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log(a3);
+
+    const a4 = [5, 11, 1, 0, -2, 88, 3];
+    console.log(
+      a4.every((item, index, arr) => {
+        return item > 0;
+      }),
+    );
+
+    console.log(
+      a4.some((item, index, arr) => {
+        return item > 0;
+      }),
+    );
+
+    const a5 = [5, 11, 1, 0, -2, 88, 3];
+    console.log(
+      a5.find((item, index, arr) => {
+        return item == 15;
+      }),
+    );
+
+    const index = a5.findIndex((item, index, arr) => {
+      if (item >= 15) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log(index);
+
+
+
+    
+  </script>
+</html>

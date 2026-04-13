@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节点操作</title>
+  </head>
+  <body>
+    <div id="box">
+      <div class="d1">1</div>
+      <div class="d2">
+        2
+        <div class="dd2">3</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //创建节点
+    const dom = document.createElement("a");
+    dom.setAttribute("href", "https://www.baidu.com");
+    dom.innerText = "点我";
+
+    const dom1 = document.createElement("a");
+    dom1.setAttribute("href", "https://www.baidu.com");
+    dom1.innerText = "点我1";
+    //添加子节点
+    // const box = document.getElementById("box");
+    // // box.appendChild(dom); //添加到末尾
+    // box.append(dom, dom1); //添加到末尾
+    //在任意位置之前插入
+    // box.insertBefore(dom, box.children[1]); //添加到开头
+    //box.insertBefore(dom, document.querySelector(".d2")); //添加到开头
+
+    // const d1 = document.querySelector(".d1");
+    // d1.before(dom); //在d1之前插入
+    // d1.after(dom1); //在d1之后插入
+
+    // const d2 = document.querySelector(".d2");
+    // //删除d2的子节点dd2并返回被删除的节点
+    // console.log(d2.removeChild(d2.querySelector(".dd2")));
+
+    // d2.remove(); //删除自己d2节点
+
+    const d2 = document.querySelector(".d2");
+    console.log(d2.children); //替换d2的子节点dd2为dom
+    console.log(d2.parentNode); //获取父节点
+  </script>
+</html>

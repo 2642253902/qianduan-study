@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this</title>
+  </head>
+  <body></body>
+  <script>
+    let name = "全局变量";
+    console.log(this);
+    //alert("123");
+
+    function get() {
+      console.log("get", this,arguments);
+    }
+    get();
+
+    const set = () => {
+      console.log("set", obj);
+    };
+    const obj = {
+      name: "对象属性",
+      get: get,
+      set: set,
+    };
+    obj.get();
+
+    set();
+    obj.set();
+
+    get.call(obj, 1, 2, 3);
+    get.apply(obj, [1, 2, 3]);
+    get.bind(obj, 1, 2, 3),(4,5,6);
+  </script>
+</html>

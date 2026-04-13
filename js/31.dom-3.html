@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom-3</title>
+  </head>
+  <style>
+    .name {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div id="box">
+      <a href="www.baidu.com">点我</a>
+      <span>你好</span>
+    </div>
+    <script>
+      const box = document.getElementById("box");
+      console.log(box.innerText);
+      console.log(box.innerHTML);
+      console.log(box.outerHTML);
+
+      box.innerText = "<span>世界</span>";
+      box.innerHTML = `<div>
+      <span>你好</span>
+       <span>世界</span>
+    </div>`;
+
+      box.outerHTML = `<div id="box">
+      <span>你好</span>
+       <span>世界</span>`;
+    </script>
+
+    <div
+      class="name"
+      style="font-size: 20px; background-color: lightgray; color: aqua"
+    >
+      你好,javascript
+    </div>
+    <script>
+      const dom = document.querySelector(".name");
+      //获取行内样式
+      console.log(dom.style.fontSize);
+      console.log(dom.style.backgroundColor);
+      console.log(dom.style.color);
+      console.log(dom.style.textAlign);
+
+      dom.style.fontSize = "30px";
+      dom.style.backgroundColor = "pink";
+      dom.style.color = "red";
+
+      console.log(getComputedStyle(dom).textAlign); // 获取计算后的样式
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器</title>
+  </head>
+  <body></body>
+  <script>
+    function handler() {
+      console.log("定时器执行了1");
+    }
+    const timer1 = setTimeout(handler, 3000);
+    console.log(timer1);
+    clearTimeout(timer1);
+    // handler();
+
+    let count = 0;
+    const timer2 = setInterval(() => {
+      if (count === 3) {
+        clearInterval(timer2);
+        return;
+      }
+
+      console.log(new Date().toLocaleString() + " 定时器执行了2");
+      count++;
+    }, 1000);
+    console.log(timer2);
+  </script>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    console.log(new Date().getTime());
+    console.log(new Date(1775116805987));
+    const date = new Date(); //当前时间
+    console.log(date);
+
+    console.log(date.getFullYear());
+    console.log(date.getMonth() + 1);
+    console.log(date.getDate());
+    console.log(date.getHours());
+    console.log(date.getMinutes());
+    console.log(date.getSeconds());
+    console.log(date.getDay()); //0-6分别代表周日到周六
+
+    function parseDate(dateString) {
+      const date = dateString ? new Date(dateString) : new Date();
+      const y = date.getFullYear().toString();
+      const M = (date.getMonth() + 1).toString().padStart(2, "0");
+      const d = date.getDate().toString().padStart(2, "0");
+      const h = date.getHours().toString().padStart(2, "0");
+      const m = date.getMinutes().toString().padStart(2, "0");
+      const s = date.getSeconds().toString().padStart(2, "0");
+      return `${y}-${M}-${d} ${h}:${m}:${s}`;
+    }
+    console.log(parseDate("2024-06-30 12:00:00"));
+    console.log(parseDate());
+
+    const d1 = new Date();
+    console.log(parseDate(d1));
+    d1.setDate(d1.getDate() - 7); //7天前
+    d1.setHours(d1.getHours() + 5); //5小时后
+    console.log(parseDate(d1));
+
+    function timeDiff(time) {
+      const t1 = new Date(time).getTime();
+      const t2 = new Date().getTime();
+
+      const diff = (t1 - t2) / 1000; //秒
+      if (diff <= 0) {
+        return "这是过去的时间";
+      }
+      //计算剩余的天数、小时数、分钟数和秒数
+      console.log(diff);
+
+      const days = Math.floor(diff / (24 * 3600)); //剩余的天数
+      const hours = Math.floor((diff % (24 * 3600)) / 3600); //剩余的小时数
+      const minutes = Math.floor((diff % 3600) / 60); //剩余的分钟数
+      const seconds = Math.floor(diff % 60); //剩余的秒数
+
+      //console.log(days, hours, minutes, seconds);
+      if (days > 0) {
+        return `${days}天${hours % 24}小时${minutes % 60}分钟${seconds % 60}秒`;
+      } else if (hours > 0) {
+        return `${hours}小时${minutes % 60}分钟${seconds % 60}秒`;
+      } else if (minutes > 0) {
+        return `${minutes}分钟${seconds}秒`;
+      } else {
+        return `${seconds}秒`;
+      }
+    }
+
+    console.log(timeDiff("2027-06-30 12:00:00"));
+
+    function timeOldDiff(time) {
+      const t1 = new Date(time).getTime();
+      const t2 = new Date().getTime();
+
+      const diff = (t2 - t1) / 1000; //秒
+      if (diff <= 0) {
+        return "这是未来的时间";
+      }
+
+      const years = Math.floor(diff / (24 * 3600 * 365));
+      const months = Math.floor((diff % (24 * 3600 * 365)) / (24 * 3600 * 30));
+      const weeks = Math.floor(diff / (24 * 3600 * 7));
+      const days = Math.floor((diff % (24 * 3600 * 30)) / (24 * 3600));
+      const hours = Math.floor((diff % (24 * 3600)) / 3600);
+      const minutes = Math.floor((diff % 3600) / 60);
+
+      if (years > 0) {
+        return `${years}年前`;
+      } else if (months > 0) {
+        return `${months}月前`;
+      } else if (weeks > 0) {
+        return `${weeks}周前`;
+      } else if (days > 0) {
+        return `${days}天前`;
+      } else if (hours > 0) {
+        return `${hours}小时前`;
+      } else if (minutes > 0) {
+        return `${minutes}分钟前`;
+      } else {
+        return "刚刚";
+      }
+    }
+
+    console.log(timeOldDiff("2020-01-01 00:00:00"));
+    console.log(timeOldDiff("2026-03-08 00:00:00"));
+    console.log(timeOldDiff("2026-03-28 15:00:00"));
+    console.log(timeOldDiff("2026-04-04 00:00:00"));
+    console.log(timeOldDiff("2026-04-08 15:00:00"));
+    console.log(timeOldDiff("2026-04-08 18:00:00"));
+    console.log(timeOldDiff("2026-04-08 18:19:00"));
+  </script>
+</html>

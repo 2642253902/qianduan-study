@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型-null和undefined</title>
+  </head>
+  <body></body>
+  <script>
+    function newObj(name) {
+      return null;
+    }
+
+    console.log(newObj("张三"), typeof newObj("张三"));
+    console.log(newObj("张三") == null, typeof newObj("张三"));
+
+    let name1;
+    console.log(name1, typeof name1);
+
+    const xx = {};
+    console.log(xx.name, typeof xx.name);
+
+    console.log(null == undefined);
+    console.log(null === undefined);
+    console.log(Boolean(null), typeof Boolean(null));
+    console.log(Boolean(undefined), typeof Boolean(undefined));
+
+    console.log(Number(null), typeof Number(null));
+    console.log(Number(undefined), typeof Number(undefined));
+  </script>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>事件</title>
+  <style>
+    .p1 {
+      width: 600px;
+      height: 600px;
+      background-color: aquamarine;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .p2 {
+      width: 400px;
+      height: 400px;
+      background-color: bisque;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .p3 {
+      width: 200px;
+      height: 200px;
+      background-color: coral;
+
+    }
+
+    .box {
+      width: 300px;
+      padding: 20pxw;
+      background-color: #f0ee;
+    }
+
+    .s {
+      width: 100px;
+      height: 100px;
+      background-color: #0dddff;
+    }
+  </style>
+</head>
+
+<body>
+  <input placeholder="用户名" oninput="input(event)" />
+  <button class="btn">点我</button>
+  <button class="remove_event">移除事件</button>
+  </input>
+
+  <script>
+    function input(e) {
+      // console.log(e);
+      console.log(e.target.value);
+    }
+
+    const btn = document.querySelector(".btn");
+    // btn.onclick= function(e){
+    //   console.log("点击了按钮");
+    //   console.log(e.target );
+    // }
+    //事件处理函数
+    function click(e) {
+      console.log("点击了按钮");
+      console.log(e.target);
+    }
+    //事件监听
+    btn.addEventListener("click", click)
+    //事件监听可以添加多个事件处理函数
+    btn.addEventListener("click", click)
+
+
+
+    const removeEvent = document.querySelector(".remove_event")
+    removeEvent.onclick = function () {
+      //事件监听可以删除事件处理函数
+      btn.removeEventListener("click", click)
+    }
+  </script>
+
+  <div class="p1">
+    <div class="p2">
+      <div class="p3">
+        我是p3
+        <a href="https://www.baidu.com" target="_blank">百度一下</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const p1 = document.querySelector(".p1");
+    const p2 = document.querySelector(".p2");
+    const p3 = document.querySelector(".p3");
+    p3.onclick = function (e) {
+      console.log("点击了p3", e.target);
+      e.stopPropagation(); // 阻止事件冒泡
+    }
+    p2.onclick = function (e) {
+      console.log("点击了p2", e.target);
+    }
+    p1.onclick = function (e) {
+      console.log("点击了p1", e.target);
+    }
+    const a = document.querySelector("a");
+    a.onclick = function (e) {
+      const ok = confirm("你点击了a标签，是否要跳转到${e.target.getAttribute('href')}？");
+      if (!ok) {
+        console.log("点击了a标签", e.target);
+        e.preventDefault(); // 阻止默认事件
+      }
+    }
+  </script>
+
+  <div class="box">
+    <div class="s s1">s1</div>
+    <div class="s s2">s2</div>
+    <div class="s s3">s3</div>
+    <div class="s s4">s4</div>
+    <div class="s s5">s5</div>
+  </div>
+  <script>
+    const box = document.querySelector(".box");
+    box.onclick = function (e) {
+      // if (e.target)
+      console.log("点击了box", e.target);
+    }
+  </script>
+
+
+
+</body>
+
+</html>

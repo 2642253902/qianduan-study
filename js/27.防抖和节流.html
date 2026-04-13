@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>防抖和节流</title>
+  </head>
+  <body>
+    <button onclick="newHandler('按钮1')">防抖</button>
+    <button onclick="throttleHandler('按钮2')">节流</button>
+  </body>
+  <script>
+    function handler(name) { // 处理点击事件，打印名字
+      console.log("点击了", name);
+    }
+
+    // 防抖：多次触发只执行最后一次
+    function debounce(fn, delay) {
+      let timer = null; // 保存定时器id
+      return function () { // 返回新函数
+        clearTimeout(timer); // 清除上一次定时器
+        timer = setTimeout(() => { // 重新设置定时器
+          fn.apply(this, arguments); // 延迟后执行原函数
+        }, delay);
+      };
+    }
+    const newHandler = debounce(handler, 1000); // 用防抖包装handler
+
+    // 节流：每隔一段时间执行一次
+    function throttle(fn, delay) {
+      let t1 = Date.now(); // 上次执行时间
+      let timer = null; // 保存定时器id
+      return function () { // 返回新函数
+        const t2 = Date.now(); // 当前时间
+        clearTimeout(timer); // 清除定时器
+        if (t2 - t1 > delay) { // 距离上次超时
+          fn.apply(this, arguments); // 立即执行
+          t1 = Date.now(); // 更新上次时间
+        } else {
+          timer = setTimeout(() => { // 没到时间就延后执行
+            fn.apply(this, arguments);
+          }, t2 - t1);
+        }
+      };
+    }
+    const throttleHandler = throttle(handler, 1000); // 用节流包装handler
+  </script>
+</html>

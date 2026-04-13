@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    class Car {
+      name;
+      price;
+      constructor(name, price) {
+        this.name = name;
+        this.price = price;
+      }
+      running() {
+        console.log(`${this.name}正在跑`);
+      }
+    }
+    class ElectricCar extends Car {
+      endurance; //续航里程
+      constructor(name, price, endurance) {
+        super(name, price);
+        this.endurance = endurance;
+      }
+      charge() {
+        console.log(`${this.name}正在充电`);
+      }
+    }
+
+    const ddc = new Car("大众", 200000);
+    console.log(ddc);
+    ddc.running();
+    const xc = new Car("雪铁龙", 300000);
+    console.log(xc);
+
+    const tesla = new ElectricCar("特斯拉", 500000, 500);
+    console.log(tesla);
+    tesla.charge();
+
+    class Animal {
+      static name = "动物";
+      static eat() {
+        console.log("吃饭");
+      }
+    }
+
+
+    console.log(Animal.name);
+    Animal.eat();
+  </script>
+</html>

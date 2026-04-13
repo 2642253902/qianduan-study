@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom-1</title>
+  </head>
+  <body>
+    <a href="https://www.baidu.com" xxx="abc" target="_blank" id="a"
+      >这是一个链接</a
+    >
+    <div id="test">这是一个测试元素</div>
+    <div class="name">这是一个class为name的元素</div>
+    <div class="name">这是第二个class为name的元素</div>
+  </body>
+  <script>
+    const dom = document.getElementById("test"); // 获取id为test的元素
+    console.log(dom); // 输出元素对象
+
+    console.log(document.getElementsByClassName("name")); // 获取class为name的元素集合
+    console.log(document.querySelector(".name")); // 获取第一个匹配name的元素
+    console.log(document.querySelectorAll(".name")); // 获取第一个匹配name的元素
+    console.log(document.querySelector("#test")); // 获取id为box的元素，找不到返回null
+
+    console.log(dom.tagName);
+    console.log(document.getElementById("a").tagName);
+
+    // 属性操作
+    const a = document.getElementById("a");
+    // 获取属性内容
+    console.log(a.getAttribute("href")); // 获取链接地址
+    //修改属性内容
+    a.setAttribute("href", "https://www.google.com"); // 修改链接地址
+    console.log(document.getElementById("a"));
+
+    a.removeAttribute("xxx"); // 删除属性
+  </script>
+</html>

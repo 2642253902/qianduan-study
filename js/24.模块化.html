@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模块化</title>
+  </head>
+  <body></body>
+  <script type="module">
+    // import { add, name, obj } from "./module/m1.js";
+    // import m1 from "./module/m1.js";
+    // console.log(add(1, 2));
+    // console.log(name);
+    // console.log(obj);
+    // console.log(m1);
+
+    const m2 = function () {
+      console.log("1");
+      function add() {
+        console.log("add1");
+      }
+      return {
+        add,
+      };
+    };
+
+    const m3 = function () {
+      console.log("2");
+      function add() {
+        console.log("add2");
+      }
+      return {
+        add,
+      };
+    };
+
+    console.log(m2());
+    console.log(m3());
+
+    m2().add();
+    m3().add();
+  </script>
+</html>

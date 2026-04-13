@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom-2</title>
+  </head>
+  <body>
+    <div id="box" data-name="myBox">这是一个盒子</div>
+    <script>
+      const dom = document.getElementById("box");
+      //获取数据属性
+      console.log(dom.dataset.name);
+      console.log(dom.dataset["name"]);
+      console.log(dom.dataset);
+      //设置数据属性
+      dom.dataset.addr = "长沙市";
+      //删除数据属性
+      delete dom.dataset.name;
+      //可以使用自定义属性的方式
+      console.log(dom.getAttribute("data-addr"));
+    </script>
+    <div class="box"></div>
+    <script>
+      const box = document.querySelector(".box");
+      console.log(box.classList);
+      //添加类
+      box.classList.add("red");
+      //是否包含某个类
+      console.log(box.classList.contains("red"));
+      //有则删除，没有则添加
+      box.classList.toggle("footer");
+      //删除类
+      box.classList.remove("red");
+      box.classList.remove("footer");
+      //替换
+      box.classList.replace("box", "blue");
+    </script>
+  </body>
+</html>

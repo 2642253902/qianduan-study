@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型-boolean</title>
+  </head>
+  <body></body>
+  <script>
+    const b1 = true;
+    const b2 = false;
+
+    console.log(Boolean(0), typeof Boolean(0));
+    console.log(Boolean(1), typeof Boolean(1));
+    console.log(Boolean(" "), typeof Boolean(" ")); //空格字符串是true
+    console.log(Boolean(""), typeof Boolean("")); //空字符串是false
+    console.log(Boolean(null), typeof Boolean(null)); //null是false
+    console.log(Boolean(undefined), typeof Boolean(undefined)); //undefined是false
+    console.log(Boolean(NaN), typeof Boolean(NaN)); //NaN是false
+    console.log(Boolean([]), typeof Boolean([])); //空数组是true
+    console.log(Boolean({}), typeof Boolean({})); //空对象是true
+
+
+    
+  </script>
+</html>

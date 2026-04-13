@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型-symbol和bigint</title>
+  </head>
+  <body></body>
+  <script>
+    const obj = {
+      name: "张三",
+      age: "14",
+    };
+
+    obj["name"] = "枫枫";
+    console.log(obj); // 这个时候，name属性对应的值已经被替换了
+
+    const hello = Symbol("name");
+    const world = Symbol("name");
+
+    const obj1 = {
+      [hello]: "hello",
+      [world]: "world",
+    };
+
+    obj1[hello] = "hi";
+    console.log(obj1);
+
+    console.log(hello == world); // false
+    console.log(hello === world); // false
+
+    console.log(obj1[Symbol("name")]); // undefined
+    console.log(obj1[hello]);
+    console.log(obj1[world]);
+
+    const b1 = BigInt(1234567890123456789012345678901234567890);
+    console.log(b1, typeof b1);
+    console.log(b1 + BigInt(10086));
+    // console.log(b1 + 1); // 控制台输出：b1 加 1 // 错误信息：不能将 BigInt 类型与其他类型混合使用，请进行显式转换
+
+    const b2 = 1002n;
+    console.log(b2, typeof b2);
+  </script>
+</html>

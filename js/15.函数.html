@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数</title>
+  </head>
+  <body></body>
+  <script>
+    const eat = () => {
+      console.log("吃饭");
+    };
+    eat();
+    (function () {
+      console.log("立即执行函数");
+    })();
+
+    function getName(name = "没有传入参数") {
+      //   if (name == undefined) {
+      //     console.log("没有传入参数");
+      //   }
+      //   name = name || "没有传入参数";
+      return name;
+    }
+    console.log(getName());
+
+    function sum(...list) {
+      console.log(list);
+    }
+    console.log(sum(1, 2, 3, 4, 5));
+    console.log(sum(1, 2, 3));
+
+    function sum1() {
+      let res = 0;
+      for (let i = 0, sum = 0; i < arguments.length; i++) {
+        res += arguments[i];
+      }
+      return res;
+    }
+    console.log(sum1(1, 2, 3, 4, 5));
+    console.log(sum1(1, 2, 3));
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM</title>
+  </head>
+  <body>
+    <button onclick="forWord()">前进</button>
+    <button onclick="back()">后退</button>
+    <button onclick="go(1)">前进一页</button>
+    <button onclick="go(-2)">后退两页</button>
+  </body>
+  <script>
+    console.log(history);
+
+    function forWord() {
+      history.forward();
+    }
+    function back() {
+      history.back();
+    }
+    function go(num) {
+      history.go(num);
+    }
+  </script>
+</html>

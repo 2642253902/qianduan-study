@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组</title>
+  </head>
+  <body></body>
+  <script>
+    const a1 = ["hello", "world", "javascript"];
+    console.log(a1[0]);
+    console.log(a1.length);
+    console.log(a1[a1.length]);
+    console.log(a1[a1.length - 1]);
+    const a2 = Array("hello", "world", "javascript");
+    console.log(a2);
+    for (let i = 0; i < a1.length; i++) {
+      console.log(a1[i]);
+    }
+
+    for (const element of a1) {
+      console.log(element);
+    }
+
+    console.log(typeof a1);
+
+    console.log(Array.isArray(a1));
+    console.log(Array.isArray(1));
+
+    console.log(a1 instanceof Array);
+    
+  </script>
+</html>

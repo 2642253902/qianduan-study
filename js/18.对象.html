@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象</title>
+  </head>
+  <body></body>
+  <script>
+    const obj = {
+      name: "对象",
+      age: 1,
+      eat: function () {
+        console.log(`${this.name}在吃饭`);
+      },
+    };
+    console.log(obj);
+
+    const o1 = new Object({ name: "对象", age: 1 });
+    console.log(o1);
+
+    function People(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    const o2 = new People("对象", 1);
+    console.log(o2);
+
+    People.prototype.eat = function () {
+      console.log(`${this.name}在吃饭`);
+    };
+    o2.eat();
+
+    const o3 = Object.create({
+      name: "对象",
+      age: 1,
+      eat: function () {
+        console.log(`${this.name}在吃饭`);
+      },
+    });
+    console.log(o3);
+    console.log(o3.name);
+    o3.name = "对象属性";
+    console.log(o3.name);
+
+    console.log(o3.name);
+    console.log(o3["name"]);
+
+    delete o3.name; //只能删除自己身上的属性，不能删除原型上的属性
+    console.log(o3.name);
+    delete o3.name;
+
+    o3.addr = "地址";
+
+    console.log("age" in o3);
+    console.log("addr" in o3); //in运算符可以判断对象身上是否有某个属性，不管是自己身上还是原型上的
+    console.log("eat" in o3);
+    console.log(o3.hasOwnProperty("addr"));
+    console.log(o3.hasOwnProperty("age")); //hasOwnProperty方法只能判断对象身上是否有某个属性，不能判断原型上的属性
+
+    for (const key in o3) {
+      //for...in循环会遍历对象身上所有的属性，包括原型上的属性
+      console.log(key);
+    }
+    console.log(Object.keys(o3)); //Object.keys方法只能获取对象身上自己的属性，不能获取原型上的属性
+  </script>
+</html>

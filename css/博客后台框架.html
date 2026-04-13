@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>博客后台框架</title>
+  </head>
+
+  <body>
+    <div class="admin">
+      <aside>
+        <div class="logo"></div>
+        <div class="menu"></div>
+      </aside>
+      <main>
+        <div class="head"></div>
+        <div class="tabs"></div>
+        <div class="container">
+          <div class="default_main"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <style>
+    /* 全局盒模型 */
+    * {
+      /* 设置所有元素的盒模型为border-box，使padding和border包含在元素的总宽高内，避免布局问题 */
+      box-sizing: border-box;
+    }
+
+    /* 去除body默认外边距 */
+    body {
+      margin: 0;
+    }
+
+    /* 管理员界面flex布局 */
+    .admin {
+      display: flex;
+    }
+
+    /* 侧边栏样式 */
+    .admin > aside {
+      width: 240px;
+      height: 100vh;
+      background-color: white;
+      border-right: 1px solid #f0eeee;
+    }
+
+    /* logo区域样式 */
+    .admin > aside > .logo {
+      height: 90px;
+      border-bottom: 1px solid #f0eeee;
+    }
+
+    /* 主体内容区域样式 */
+    .admin > main {
+      /* 计算宽度时考虑侧边栏的宽度 */
+      width: calc(100% - 240px);
+      height: 100vh;
+      background-color: white;
+    }
+    /* 头部区域样式 */
+    .admin > main > .head {
+      height: 60px;
+      border-bottom: 1px solid #f0eeee;
+    }
+    /* 标签区域样式 */
+    .admin > main > .tabs {
+      height: 30px;
+      border-top: 1px solid #f0eeee;
+      border-bottom: 1px solid #f0eeee;
+    }
+    /* 内容容器样式 */
+    .admin > main > .container {
+      height: calc(100% - 90px);
+      /* 使内容区域可滚动，避免内容溢出时页面布局混乱 */
+      overflow-y: auto;
+      background-color: #f0eeee;
+      padding: 20px;
+    }
+    /* 默认内容区域样式 */
+    .default_main {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border-radius: 5px;
+    }
+  </style>
+</html>

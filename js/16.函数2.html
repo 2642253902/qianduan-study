@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数2</title>
+  </head>
+  <body></body>
+  <script>
+    function set() {}
+    //console.log(set) 输出函数本身（函数对象）
+    console.log(set);
+    //console.log(set()) 输出函数调用的结果
+    console.log(set());
+
+    function getName() {
+      return "hello world";
+    }
+    const list = [1, "sss", getName];
+    console.log(list[2]);
+    console.log(list[2]());
+
+    const obj = {
+      name: "hello world",
+      eat: function () {
+        return `${this.name}在吃饭`;
+      },
+      say: () => {
+        console.log("在说话");
+      },
+      study() {
+        console.log(`${this.name}在学习`);
+      },
+    };
+    console.log(obj.name);
+    console.log(obj.eat());
+    obj.say();
+    obj.study();
+
+    const list1 = ["你好", "吃饭了吗", ["好", [["abc"]]]];
+    console.log(list1);
+    const a1 = [];
+    function oneArray(array) {
+      for (const arrElement of array) {
+        if (arrElement instanceof Array) {
+          oneArray(arrElement);
+          continue;
+        } else {
+          a1.push(arrElement);
+        }
+      }
+    }
+    oneArray(list1);
+    console.log(a1);
+
+    function oneArray1(array) {
+      const a2 = [];
+      function _oneArray(array) {
+        for (const arrElement of array) {
+          if (arrElement instanceof Array) {
+            _oneArray(arrElement);
+            continue;
+          } else {
+            a2.push(arrElement);
+          }
+        }
+      }
+      _oneArray(array);
+      return a2;
+    }
+    console.log(oneArray1(list1));
+
+    function oneArray2(array) {
+      const a3 = [];
+      for (const arrElement of array) {
+        if (arrElement instanceof Array) {
+          a3.push(...oneArray2(arrElement));
+          continue
+        } else {
+          a3.push(arrElement);
+        }
+      }
+      return a3;
+    }
+    console.log(oneArray2(list1));
+
+
+  </script>
+</html>
